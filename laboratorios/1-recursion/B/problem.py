@@ -3,7 +3,15 @@ import json
 
 # TODO Complete!
 def arrange(numbers):
-    return numbers
+    listanew=[]
+    for i in numbers:
+        if i%2==0:
+            listanew.append(i)
+    for l in numbers:
+        if l%2!=0:
+            listanew.append(l)
+    print(listanew)
+    return listanew
 
 
 if __name__ == '__main__':
