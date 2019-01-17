@@ -3,7 +3,17 @@ import json
 
 # TODO Complete!
 def super_digit(n, k):
-    return 0
+    p=(str(n)*k)
+    cont=0
+    for i in p:
+      
+        cont+=int(i)
+    if cont>=10:
+        return super_digit(cont, 1)
+    else:
+        return cont
+        
+        
 
 
 if __name__ == '__main__':
