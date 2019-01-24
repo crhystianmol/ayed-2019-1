@@ -1,24 +1,24 @@
-import json
-
-
-# TODO Complete!!
-def reverse(text,textrev,cont):
-    if cont==len(text)+1:
-        return textrev
-    else:
-        textrev+=text[len(text)-cont]
-        return reverse(text,textrev,cont+1)
-        
+from sys import stdin
+def partition(x,low,high): 
+    i = ( low-1 )        
+    pivot = int(x[high])    
+  
+    for j in range(low , high):
      
+        if   int(x[j]) <= pivot:              
+            i = i+1 
+            x[i],x[j] = x[j],x[i]   
+    x[i+1],x[high] = x[high],x[i+1] 
+    return i+1  
 
-textrev=""
-cont=1
-if __name__ == '__main__':
-    with open('./data.json') as f:
-        tests = json.load(f)
-        for i, test in enumerate(tests):
-            text = test["text"]
-            actual = reverse(text,textrev,cont)
-            expected = test['result']
-            assert actual == expected, f'Test {i} | expected: {expected}, actual: {actual}'
-        print('OK!')
+
+def quickSort(x,low,high): 
+    if low < high:         
+        pi = partition(x,low,high) 
+  
+       
+        quickSort(x, low, pi-1) 
+        quickSort(x, pi+1, high)
+x=stdin.readline().strip().split()
+quickSort(x,0,len(x)-1) 
+print("Resultado:",int(x[-1])*int(x[-2]))
